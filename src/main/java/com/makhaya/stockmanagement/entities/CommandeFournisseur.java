@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,13 +19,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@Builder
+@SuperBuilder
 public class CommandeFournisseur extends AbstractEntity{
     private String code;
     private LocalDate dateCommande;
     @ManyToOne
     @JoinColumn(name = "id_fournisseur")
     private Fournisseur fournisseur;
-    @OneToMany(mappedBy = "commandeFourniseur")
+    @OneToMany(mappedBy = "commandeFournisseur")
     private List<LigneCommandeFournisseur> ligneCommandeFournisseurs;
 }

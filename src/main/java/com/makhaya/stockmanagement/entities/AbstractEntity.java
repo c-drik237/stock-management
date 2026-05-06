@@ -15,6 +15,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -29,12 +31,16 @@ public class AbstractEntity  implements Serializable {
     private Integer id;
     @CreatedDate
     @Column(nullable = false)
+    @JsonIgnore
     private LocalDate createAt;
     @CreatedDate
     @Column(nullable = false)
+    @JsonIgnore
     private LocalDate lastModifiedAt;
     @CreatedBy
+    @JsonIgnore
     private String createdBy;
     @LastModifiedBy
+    @JsonIgnore 
     private String lastModifiedBy;
 }
